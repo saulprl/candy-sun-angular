@@ -1,0 +1,26 @@
+<mat-card>
+  <h2>Inicia sesión</h2>
+  <!-- mat-spinner -->
+  <form [formGroup]="form" (submit)="onLogin()">
+    <mat-form-field>
+      <input
+      matInput
+      type="email"
+      placeholder="Correo electrónico"
+      formControlName="email"
+      >
+      <mat-error *ngIf="controls.email.errors?.required">Este campo es obligatorio.</mat-error>
+      <mat-error *ngIf="controls.email.errors?.email">Ingresa un correo electrónico válido.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+      matInput
+      type="password"
+      placeholder="Contraseña"
+      formControlName="password"
+      >
+      <mat-error *ngIf="controls.password.errors?.required">Este campo es obligatorio.</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Ingresar</button>
+  </form>
+</mat-card>

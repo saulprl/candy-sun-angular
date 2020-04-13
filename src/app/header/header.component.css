@@ -1,0 +1,25 @@
+mat-toolbar {
+  margin-bottom: 1rem;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  padding-top: 2px;
+}
+
+p {
+  font-size: 14px;
+  margin: 0 3px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

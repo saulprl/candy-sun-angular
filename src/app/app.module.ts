@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -22,6 +22,8 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { ProductsComponent } from './products/products.component';
+import { ProductDialogComponent } from './products/product-dialog/product-dialog.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { ProductsComponent } from './products/products.component';
     HeaderComponent,
     LoginComponent,
     SignupComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,16 @@ import { ProductsComponent } from './products/products.component';
     MatCheckboxModule,
     MatMenuModule
   ],
-  providers: [],
+  entryComponents: [
+    ProductDialogComponent
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,69 @@
+<h1 mat-dialog-title>{{ headerText }}</h1>
+<div *ngIf="isDelete" mat-dialog-content>
+  <p>¿Estás seguro de que deseas eliminar este producto?</p>
+</div>
+<form *ngIf="!isDelete" mat-dialog-content [formGroup]="form">
+  <mat-form-field *ngIf="data.isEdit">
+    <input
+    matInput
+    placeholder="ID"
+    formControlName="_id"
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <input
+    matInput
+    placeholder="Nombre"
+    formControlName="name"
+    >
+    <mat-error *ngIf="controls.name.errors?.required">Este campo es obligatorio.</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+    matInput
+    type="number"
+    placeholder="Precio de adquisición"
+    formControlName="purchasePrice"
+    >
+    <mat-error *ngIf="controls.purchasePrice.errors?.required">Este campo es obligatorio.</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+    matInput
+    type="date"
+    formControlName="purchaseDate"
+    >
+    <mat-error *ngIf="controls.purchaseDate.errors?.required">Este campo es obligatorio.</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+    matInput
+    type="number"
+    placeholder="Precio de venta"
+    formControlName="sellingPrice"
+    >
+    <mat-error *ngIf="controls.sellingPrice.errors?.required">Este campo es obligatorio.</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+    matInput
+    type="number"
+    placeholder="Cantidad"
+    formControlName="quantity"
+    >
+    <mat-error *ngIf="controls.quantity.errors?.required">Este campo es obligatorio.</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+    matInput
+    placeholder="Categoría"
+    formControlName="category"
+    >
+    <mat-error *ngIf="controls.category.errors?.required">Este campo es obligatorio.</mat-error>
+  </mat-form-field>
+</form>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="close()" color="warn">Cancelar</button>
+  <button *ngIf="!isDelete" mat-raised-button cdkFocusInitial (click)="save()" color="accent">{{ buttonText }}</button>
+  <button *ngIf="isDelete" mat-button cdkFocusInitial (click)="delete()" color="accent">Eliminar</button>
+</div>

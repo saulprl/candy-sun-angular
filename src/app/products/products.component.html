@@ -1,1 +1,52 @@
-<p>products works!</p>
+<button mat-raised-button color="accent" (click)="openDialog()">Agregar producto</button>
+<button mat-raised-button color="accent" (click)="refresh()">Actualizar</button>
+<div class="container">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="name" sticky>
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let product">{{ product.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="purchase_price">
+      <th mat-header-cell *matHeaderCellDef>Precio de adquisición</th>
+      <td mat-cell *matCellDef="let product">{{ product.purchase_price }}</td>
+    </ng-container>
+    <ng-container matColumnDef="purchase_date">
+      <th mat-header-cell *matHeaderCellDef>Fecha de adquisición</th>
+      <td mat-cell *matCellDef="let product">{{ product.purchase_date }}</td>
+    </ng-container>
+    <ng-container matColumnDef="selling_price">
+      <th mat-header-cell *matHeaderCellDef>Precio de venta</th>
+      <td mat-cell *matCellDef="let product">{{ product.selling_price }}</td>
+    </ng-container>
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+      <td mat-cell *matCellDef="let product">{{ product.quantity }}</td>
+    </ng-container>
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef>Categoría</th>
+      <td mat-cell *matCellDef="let product">{{ product.category }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="star" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let product">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Opciones">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="onEdit(product)">
+            <mat-icon>edit</mat-icon>
+            <span>Editar producto</span>
+          </button>
+          <button mat-menu-item (click)="onDelete(product)">
+            <mat-icon>delete</mat-icon>
+            <span>Eliminar producto</span>
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

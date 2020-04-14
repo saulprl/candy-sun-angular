@@ -1,6 +1,6 @@
 <mat-card>
   <h2>Registro</h2>
-  <!-- mat-spinner -->
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form [formGroup]="form" (ngSubmit)="onSignup()">
     <mat-form-field>
       <input

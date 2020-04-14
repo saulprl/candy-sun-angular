@@ -1,21 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { mustMatch } from './must-match.validator';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, OnDestroy {
   isLoading = false;
   form: FormGroup;
+  private authStatusSub: Subscription;
 
   constructor(
+    public authService: AuthService,
     private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
+    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(authStatus => {
+      this.isLoading = false;
+    });
+
     this.form = this.formBuilder.group({
       name: [ '', Validators.required ],
       surname: [ '', Validators.required ],
@@ -34,6 +42,16 @@ export class SignupComponent implements OnInit {
   }
 
   onSignup(): void {
+    if (this.form.invalid) {
+      return;
+    }
 
+    this.isLoading = true;
+    this.authService.createUser(this.form.value.name, this.form.value.surname, this.form.value.dob,
+      this.form.value.email, this.form.value.password);
+  }
+
+  ngOnDestroy(): void {
+    this.authStatusSub.unsubscribe();
   }
 }

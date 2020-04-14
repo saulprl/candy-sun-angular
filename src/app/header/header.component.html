@@ -1,14 +1,21 @@
 <mat-toolbar color="primary">
   <span>
-    <a routerLink="/" routerLinkActive="mat-accent">Home</a>
+    <a routerLink="/" routerLinkActive="mat-accent">Candy Sun</a>
   </span>
   <span class="spacer"></span>
   <ul>
-    <li>
+    <li *ngIf="!userIsAuthenticated">
       <a mat-button routerLink="/login" routerLinkActive="mat-accent">Log in</a>
     </li>
-    <li>
+    <li *ngIf="userIsAuthenticated">
       <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Sign up</a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <p>Logged in as {{ this.authService.getUserName() }}
+        <button mat-icon-button (click)="onLogOut()">
+          <mat-icon class="material-icons" aria-label="Log out">exit_to_app</mat-icon>
+        </button>
+      </p>
     </li>
   </ul>
 </mat-toolbar>

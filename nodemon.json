@@ -1,0 +1,7 @@
+{
+  "env": {
+    "MONGO_ATLAS_PW": "iFri8Dw6DGc2QMfV",
+    "JWT_KEY": "this_is_a_SEKRUT_key_which_should_definitely_be_longer_than_this_but_whatever_dude",
+    "PORT": "3000"
+  }
+}

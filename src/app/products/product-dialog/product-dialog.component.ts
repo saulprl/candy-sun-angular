@@ -29,7 +29,10 @@ export class ProductDialogComponent implements OnInit {
       purchaseDate: [ this.data.purchase_date, Validators.required ],
       sellingPrice: [ this.data.selling_price, Validators.required ],
       quantity: [ this.data.quantity, Validators.required ],
-      category: [ this.data.category, Validators.required ]
+      category: [ this.data.category, Validators.required ],
+      calories: [ this.data.calories, Validators.required ],
+      brand: [ this.data.brand, Validators.required ],
+      expiration: [ this.data.expiration, Validators.required ]
     });
 
     this.buttonText = this.data.isEdit ? 'Editar' : 'Agregar';
@@ -51,7 +54,10 @@ export class ProductDialogComponent implements OnInit {
         this.form.value.purchaseDate,
         this.form.value.sellingPrice,
         this.form.value.quantity,
-        this.form.value.category
+        this.form.value.category,
+        this.form.value.calories,
+        this.form.value.brand,
+        this.form.value.expiration
       );
     }
     this.close();

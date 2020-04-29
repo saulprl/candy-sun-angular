@@ -16,7 +16,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   private dataSub: Subscription;
   dataSource: ProductData[] = [];
-  displayedColumns: string[] = ['name', 'purchase_price', 'purchase_date', 'selling_price', 'quantity', 'category', 'star'];
+  displayedColumns: string[] = ['name', 'purchase_price', 'purchase_date',
+    'selling_price', 'quantity', 'category', 'calories', 'brand', 'expiration', 'star'];
 
   private productTemplate: ProductData = {
     _id: '',
@@ -25,7 +26,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
     purchase_date: null,
     selling_price: 0,
     quantity: 0,
-    category: ''
+    category: '',
+    calories: 0,
+    brand: '',
+    expiration: null
   };
 
   constructor(
@@ -42,7 +46,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
         this.dataSource = productData.products;
         this.table.renderRows();
       }
-    })
+    });
   }
 
   openDialog(): void {
@@ -68,6 +72,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
         selling_price: product.selling_price,
         quantity: product.quantity,
         category: product.category,
+        calories: product.calories,
+        brand: product.brand,
+        expiration: product.expiration,
         isEdit: true
       }
     });
@@ -84,6 +91,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
         selling_price: product.selling_price,
         quantity: product.quantity,
         category: product.category,
+        calories: product.calories,
+        brand: product.brand,
+        expiration: product.expiration,
         isDelete: true
       }
     });

@@ -13,6 +13,20 @@ button {
   margin-top: 1rem;
 }
 
+th.mat-header-cell {
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mat-cell {
+  text-align: center;
+  justify-content: center;
+}
+
+td.mat-cell, th.mat-header-cell {
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 td.mat-column.star {
   width: 20px;
   padding-right: 0.5rem;

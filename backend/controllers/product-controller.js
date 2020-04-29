@@ -7,7 +7,10 @@ exports.addProduct = (request, response, next) => {
     purchase_date: request.body.purchase_date,
     selling_price: request.body.selling_price,
     quantity: request.body.quantity,
-    category: request.body.category
+    category: request.body.category,
+    calories: request.body.calories,
+    brand: request.body.brand,
+    expiration: request.body.expiration
   });
 
   product.save().then(result => {

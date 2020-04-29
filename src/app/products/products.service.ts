@@ -36,7 +36,10 @@ export class ProductsService {
             purchase_date: product.purchase_date,
             selling_price: product.selling_price,
             quantity: product.quantity,
-            category: product.category
+            category: product.category,
+            calories: product.calories,
+            brand: product.brand,
+            expiration: product.expiration
           };
         }),
         productCount: productData.productCount
@@ -55,7 +58,8 @@ export class ProductsService {
     return this.dataListener.asObservable();
   }
 
-  addProduct(name: string, purchase_price: number, purchase_date: Date, selling_price: number, quantity: number, category: string) {
+  addProduct(name: string, purchase_price: number, purchase_date: Date, selling_price: number,
+             quantity: number, category: string, calories: number, brand: string, expiration: Date) {
     const product: ProductData = {
       _id: '',
       name,
@@ -63,7 +67,10 @@ export class ProductsService {
       purchase_date,
       selling_price,
       quantity,
-      category
+      category,
+      calories,
+      brand,
+      expiration
     };
 
     this.http.post<{ message: string, product: ProductData }>(BACKEND_URL, product).subscribe(responseData => {

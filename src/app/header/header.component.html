@@ -5,13 +5,16 @@
   <span class="spacer"></span>
   <ul>
     <li *ngIf="!userIsAuthenticated">
-      <a mat-button routerLink="/login" routerLinkActive="mat-accent">Log in</a>
+      <a mat-button routerLink="/login" routerLinkActive="mat-accent">Ingresar</a>
     </li>
     <li *ngIf="userIsAuthenticated">
-      <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Sign up</a>
+      <a mat-button routerLink="/products" routerLinkActive="mat-accent">Productos</a>
     </li>
     <li *ngIf="userIsAuthenticated">
-      <p>Logged in as {{ this.authService.getUserName() }}
+      <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Crear cuenta</a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <p>Conectado como {{ this.authService.getUserName() }}
         <button mat-icon-button (click)="onLogOut()">
           <mat-icon class="material-icons" aria-label="Log out">exit_to_app</mat-icon>
         </button>

@@ -6,4 +6,7 @@ export interface ProductData {
   selling_price: number;
   quantity: number;
   category: string;
+  calories: number;
+  brand: string;
+  expiration: Date;
 }

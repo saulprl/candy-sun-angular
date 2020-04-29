@@ -7,13 +7,23 @@ const productRoutes = require('./routes/products');
 
 const app = express();
 
-mongoose.connect(`mongodb://127.0.0.1:27017/candy-sun`,
+mongoose.connect(`mongodb+srv://phaseDB:${process.env.MONGO_ATLAS_PW}@cluster0-vaq5q.mongodb.net/candy-sun?retryWrites=true&w=majority`,
   { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log('Connected to local database!');
-  }).catch(() => {
-    console.log('Connection to local database failed!');
-  });
+    console.log('Connected to database!');
+  })
+  .catch(() => {
+    console.log('Connection failed! Testing on local database...');
+    mongoose.connect(`mongodb://127.0.0.1:27017/candy-sun`,
+    { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+      console.log('Connected to local database!');
+    }).catch(() => {
+      console.log('Connection to local database failed!');
+    });
+  }
+);
+
 
 app.use((bodyParser.json()));
 

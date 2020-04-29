@@ -7,7 +7,10 @@ const productSchema = mongoose.Schema({
   purchase_date: { type: Date, required: true },
   selling_price: { type: Number, required: true },
   quantity: { type: Number, required: true },
-  category: { type: String, required: true }
+  category: { type: String, required: true },
+  calories: { type: Number, required: true },
+  brand: { type: String, required: true },
+  expiration: { type: Date, required: true }
 });
 
 productSchema.plugin(uniqueValidator);

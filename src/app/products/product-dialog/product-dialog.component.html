@@ -61,6 +61,32 @@
     >
     <mat-error *ngIf="controls.category.errors?.required">Este campo es obligatorio.</mat-error>
   </mat-form-field>
+  <mat-form-field>
+    <input
+    matInput
+    type="number"
+    placeholder="Calorías"
+    formControlName="calories"
+    >
+    <mat-error *ngIf="controls.calories.errors?.required">Este campo es obligatorio.</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+    matInput
+    type="text"
+    placeholder="Marca"
+    formControlName="brand"
+    >
+    <mat-error *ngIf="controls.brand.errors?.required">Este campo es obligatorio.</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+    matInput
+    type="date"
+    formControlName="expiration"
+    >
+    <mat-error *ngIf="controls.expiration.errors?.required">Este campo es obligatorio.</mat-error>
+  </mat-form-field>
 </form>
 <div mat-dialog-actions>
   <button mat-raised-button (click)="close()" color="warn">Cancelar</button>

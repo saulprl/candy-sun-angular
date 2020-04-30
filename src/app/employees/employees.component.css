@@ -16,6 +16,7 @@ button {
 th.mat-header-cell {
   flex-direction: column;
   justify-content: center;
+  text-align: center;
 }
 
 .mat-cell {
@@ -25,6 +26,14 @@ th.mat-header-cell {
 
 td.mat-cell, th.mat-header-cell {
   border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+td.mat-cell:first-of-type, th.mat-header-cell:first-of-type {
+  padding-left: 0;
+}
+
+td.mat-cell:last-of-type, th.mat-header-cell:last-of-type {
+  padding-right: 0;
 }
 
 td.mat-column.star {

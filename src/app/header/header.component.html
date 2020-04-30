@@ -16,10 +16,10 @@
       <li *ngIf="userIsAuthenticated">
         <a mat-button routerLink="/products" routerLinkActive="mat-accent">Productos</a>
       </li>
-      <li>
+      <li *ngIf="userIsAuthenticated">
         <a mat-button routerLink="/employees" routerLinkActive="mat-accent">Empleados</a>
       </li>
-      <li>
+      <li *ngIf="userIsAuthenticated">
         <a mat-button routerLink="/categories" routerLinkActive="mat-accent">Categorías</a>
       </li>
       <!-- <li *ngIf="userIsAuthenticated">

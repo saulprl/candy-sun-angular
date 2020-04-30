@@ -17,8 +17,7 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   constructor(
     public authService: AuthService,
-    private formBuilder: FormBuilder,
-    private datePipe: DatePipe
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {

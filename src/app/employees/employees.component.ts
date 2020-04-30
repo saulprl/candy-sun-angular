@@ -45,7 +45,7 @@ export class EmployeesComponent implements OnInit, OnDestroy {
 
   openDialog(): void {
     this.dialog.open(EmployeeDialogComponent, {
-      width: '250px',
+      width: '65%',
       data: { employee: this.employeeTemplate, isEdit: false }
     });
   }
@@ -57,7 +57,7 @@ export class EmployeesComponent implements OnInit, OnDestroy {
 
   onEdit(employee: EmployeeData) {
     this.dialog.open(EmployeeDialogComponent, {
-      width: '250px',
+      width: '65%',
       data: {
         _id: employee._id,
         name: employee.name,

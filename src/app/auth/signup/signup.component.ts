@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { mustMatch } from './must-match.validator';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
@@ -16,7 +17,8 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   constructor(
     public authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private datePipe: DatePipe
   ) { }
 
   ngOnInit(): void {

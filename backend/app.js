@@ -35,6 +35,7 @@ app.use((request, response, next) => {
 });
 
 app.use('/api/users', userRoutes);
+app.use('/api/employees', userRoutes);
 app.use('/api/products', productRoutes);
 
 module.exports = app;

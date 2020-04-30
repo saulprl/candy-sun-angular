@@ -1,24 +1,69 @@
 <mat-toolbar color="primary">
-  <span>
-    <a routerLink="/" routerLinkActive="mat-accent">Candy Sun</a>
-  </span>
-  <span class="spacer"></span>
-  <ul>
-    <li *ngIf="!userIsAuthenticated">
-      <a mat-button routerLink="/login" routerLinkActive="mat-accent">Ingresar</a>
-    </li>
-    <li *ngIf="userIsAuthenticated">
-      <a mat-button routerLink="/products" routerLinkActive="mat-accent">Productos</a>
-    </li>
-    <li *ngIf="userIsAuthenticated">
-      <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Crear cuenta</a>
-    </li>
-    <li *ngIf="userIsAuthenticated">
-      <p>Conectado como {{ this.authService.getUserName() }}
-        <button mat-icon-button (click)="onLogOut()">
-          <mat-icon class="material-icons" aria-label="Log out">exit_to_app</mat-icon>
+  <!-- <span class="side-nav">
+    <button mat-icon-button>
+      <mat-icon class="material-icons" aria-label="Side nav">menu</mat-icon>
+    </button>
+  </span> -->
+  <mat-toolbar-row class="big-screen">
+    <span class="header-text">
+      <a routerLink="/" routerLinkActive="mat-accent">Candy Sun</a>
+    </span>
+    <span class="spacer"></span>
+    <ul>
+      <li class="essential" *ngIf="!userIsAuthenticated">
+        <a mat-button routerLink="/login" routerLinkActive="mat-accent">Ingresar</a>
+      </li>
+      <li *ngIf="userIsAuthenticated">
+        <a mat-button routerLink="/products" routerLinkActive="mat-accent">Productos</a>
+      </li>
+      <li>
+        <a mat-button routerLink="/employees" routerLinkActive="mat-accent">Empleados</a>
+      </li>
+      <li>
+        <a mat-button routerLink="/categories" routerLinkActive="mat-accent">Categorías</a>
+      </li>
+      <!-- <li *ngIf="userIsAuthenticated">
+        <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Crear cuenta</a>
+      </li> -->
+      <li class="essential" *ngIf="userIsAuthenticated">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
+          <mat-icon>more_vert</mat-icon>
         </button>
-      </p>
-    </li>
-  </ul>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>account_box</mat-icon>
+            <span>Perfil</span>
+          </button>
+          <button mat-menu-item (click)="router.navigate(['/signup'])">
+            <mat-icon>how_to_reg</mat-icon>
+            <span>Crear cuenta</span>
+          </button>
+          <button mat-menu-item (click)="authService.logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Cerrar sesión</span>
+          </button>
+        </mat-menu>
+      </li>
+      <!-- <li *ngIf="userIsAuthenticated">
+        <p>Conectado como {{ this.authService.getUserName() }}
+          <button mat-icon-button (click)="onLogOut()">
+            <mat-icon class="material-icons" aria-label="Log out">exit_to_app</mat-icon>
+          </button>
+        </p>
+      </li> -->
+    </ul>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="small-screen" *ngIf="userIsAuthenticated">
+    <ul>
+      <li>
+        <a mat-button routerLink="/products" routerLinkActive="mat-accent">Productos</a>
+      </li>
+      <li>
+        <a mat-button routerLink="/employees" routerLinkActive="mat-accent">Empleados</a>
+      </li>
+      <li>
+        <a mat-button routerLink="/categories" routerLinkActive="mat-accent">Categorías</a>
+      </li>
+    </ul>
+  </mat-toolbar-row>
 </mat-toolbar>

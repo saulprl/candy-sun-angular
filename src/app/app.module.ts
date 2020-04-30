@@ -17,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -24,6 +25,8 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDialogComponent } from './products/product-dialog/product-dialog.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { EmployeesComponent } from './employees/employees.component';
+import { EmployeeDialogComponent } from './employees/employee-dialog/employee-dialog/employee-dialog.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     LoginComponent,
     SignupComponent,
     ProductsComponent,
-    ProductDialogComponent
+    ProductDialogComponent,
+    EmployeesComponent,
+    EmployeeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -50,10 +55,12 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     MatInputModule,
     MatIconModule,
     MatCheckboxModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSidenavModule
   ],
   entryComponents: [
-    ProductDialogComponent
+    ProductDialogComponent,
+    EmployeeDialogComponent
   ],
   providers: [
     {

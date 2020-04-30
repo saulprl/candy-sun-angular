@@ -48,7 +48,7 @@ exports.updateProduct = (request, response, next) => {
       });
     } else {
       response.status(200).json({
-        message: 'La información del producto ha sido actualizada.'
+        message: 'Los datos del producto han sido actualizados.'
       });
     }
   }).catch(error => {
@@ -71,7 +71,7 @@ exports.getProducts = (request, response, next) => {
     return Product.countDocuments();
   }).then(count => {
     response.status(200).json({
-      message: 'Products obtenidos correctamente.',
+      message: 'Productos obtenidos correctamente.',
       products: fetchedProducts,
       productCount: count
     });

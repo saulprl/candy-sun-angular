@@ -19,7 +19,7 @@ exports.addProduct = (request, response, next) => {
       result
     });
   }).catch(error => {
-    let message = 'Ocurrió un error.';
+    let message = 'Ocurrió un error desconocido.';
     if (error.errors.name) {
       message = `El producto ${error.errors.name.value} ya existe en la base de datos.`;
     }
@@ -52,7 +52,7 @@ exports.updateProduct = (request, response, next) => {
       });
     }
   }).catch(error => {
-    let message = 'Ocurrió un error.';
+    let message = 'Ocurrió un error desconocido.';
     if (error.MongoError) {
       message = `${error.MongoError.keyValue} ya está en uso.`;
     }
@@ -77,7 +77,7 @@ exports.getProducts = (request, response, next) => {
     });
   }).catch(error => {
     response.status(500).json({
-      message: 'Ocurrió un error.'
+      message: 'Ocurrió un error desconocido.'
     });
   });
 };

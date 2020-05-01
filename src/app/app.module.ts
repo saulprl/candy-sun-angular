@@ -31,6 +31,7 @@ import { EmployeeDialogComponent } from './employees/employee-dialog/employee-di
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoryDialogComponent } from './categories/category-dialog/category-dialog.component';
 import { ErrorComponent } from './error/error.component';
+import { ErrorInterceptor } from './error.interceptor';
 
 @NgModule({
   declarations: [
@@ -69,12 +70,18 @@ import { ErrorComponent } from './error/error.component';
   entryComponents: [
     ProductDialogComponent,
     EmployeeDialogComponent,
-    CategoryDialogComponent
+    CategoryDialogComponent,
+    ErrorComponent
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true
     }
   ],

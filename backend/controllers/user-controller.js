@@ -15,11 +15,11 @@ exports.createUser = (request, response, next) => {
 
     user.save().then(result => {
       response.status(201).json({
-        message: 'User created',
+        message: 'Usuario creado correctamente.',
         result: result
       });
     }).catch(error => {
-      let message = 'An error occurred';
+      let message = 'Ocurrió un error desconocido.';
       if (error.errors.email) {
         message = `The email ${error.errors.email.value} is already in use.`;
       }
@@ -37,7 +37,7 @@ exports.login = (request, response, next) => {
   User.findOne({ email: request.body.email }).then(user => {
     if (!user) {
       return response.status(401).json({
-        message: 'No user found.'
+        message: 'No existe un usuario con esa dirección de correo electrónico.'
       });
     }
 
@@ -46,7 +46,7 @@ exports.login = (request, response, next) => {
   }).then(result => {
     if (!result) {
       return response.status(401).json({
-        message: 'Authentication credentials are invalid.'
+        message: 'Las credenciales de autenticación son incorrectas.'
       });
     }
 
@@ -62,7 +62,7 @@ exports.login = (request, response, next) => {
     );
 
     response.status(200).json({
-      message: 'Logged in successfully!',
+      message: 'Sesión iniciada correctamente.',
       token: token,
       expiresIn: 3600,
       userId: fetchedUser._id,
@@ -70,7 +70,7 @@ exports.login = (request, response, next) => {
     });
   }).catch(error => {
     response.status(401).json({
-      message: 'An error occurred.'
+      message: `Ocurrió el siguiente error: ${error.MongoError.keyValue}`
     });
   });
 };
@@ -89,7 +89,7 @@ exports.getUsers = (request, response, next) => {
     });
   }).catch(error => {
     response.status(500).json({
-      message: 'Ocurrió un error.'
+      message: 'Ocurrió un error desconocido.'
     });
   });
 };

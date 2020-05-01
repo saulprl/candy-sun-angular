@@ -30,6 +30,7 @@ import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeDialogComponent } from './employees/employee-dialog/employee-dialog.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoryDialogComponent } from './categories/category-dialog/category-dialog.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { CategoryDialogComponent } from './categories/category-dialog/category-d
     EmployeesComponent,
     EmployeeDialogComponent,
     CategoriesComponent,
-    CategoryDialogComponent
+    CategoryDialogComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

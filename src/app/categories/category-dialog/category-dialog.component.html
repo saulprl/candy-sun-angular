@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>{{ headerText }}</h1>
+<div *ngIf="isDelete" mat-dialog-content>
+  <p>¿Estás seguro de que deseas eliminar esta categoría?</p>
+</div>
+<form *ngIf="!isDelete" mat-dialog-content [formGroup]="form">
+  <mat-form-field *ngIf="data.isEdit">
+    <input
+    matInput
+    placeholder="ID"
+    formControlName="_id"
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <input
+    matInput
+    placeholder="Nombre"
+    formControlName="name"
+    >
+    <mat-error *ngIf="controls.name.errors?.required">Este campo es obligatorio.</mat-error>
+  </mat-form-field>
+</form>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="close()" color="warn">Cancelar</button>
+  <button *ngIf="!isDelete" mat-raised-button cdkFocusInitial (click)="save()" color="accent">{{ buttonText }}</button>
+  <button *ngIf="isDelete" mat-button cdkFocusInitial (click)="delete()" color="accent">Eliminar</button>
+</div>

@@ -1,0 +1,54 @@
+table {
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  margin: 0 0.5rem 0.5rem 0;
+}
+
+.container {
+  width: 65%;
+  overflow: auto;
+  margin: 1rem auto 0;
+}
+
+th.mat-header-cell {
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.mat-cell {
+  text-align: center;
+  justify-content: center;
+}
+
+td.mat-cell, th.mat-header-cell {
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+td.mat-cell:first-of-type, th.mat-header-cell:first-of-type {
+  padding-left: 0;
+}
+
+td.mat-cell:last-of-type, th.mat-header-cell:last-of-type {
+  padding-right: 0;
+}
+
+td.mat-column.star {
+  width: 20px;
+  padding-right: 0.5rem;
+}
+
+th.mat-column-position, td.mat-column-position {
+  padding-left: 0.5rem;
+}
+
+.mat-table-sticky:first-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.mat-table-sticky:last-child {
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+}

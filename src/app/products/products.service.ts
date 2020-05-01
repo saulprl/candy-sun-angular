@@ -58,14 +58,14 @@ export class ProductsService {
     return this.dataListener.asObservable();
   }
 
-  addProduct(name: string, purchase_price: number, purchase_date: Date, selling_price: number,
+  addProduct(name: string, purchasePrice: number, purchaseDate: Date, sellingPrice: number,
              quantity: number, category: string, calories: number, brand: string, expiration: Date) {
     const product: ProductData = {
       _id: '',
       name,
-      purchase_price,
-      purchase_date,
-      selling_price,
+      purchase_price: purchasePrice,
+      purchase_date: purchaseDate,
+      selling_price: sellingPrice,
       quantity,
       category,
       calories,

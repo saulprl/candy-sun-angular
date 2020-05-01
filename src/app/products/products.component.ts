@@ -42,7 +42,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
     this.dataSub = this.productsService.getDataListener()
     .subscribe((productData: { products: ProductData[], productCount: number }) => {
-      if (productData.productCount > 0) {
+      if (productData.productCount >= 0) {
         this.dataSource = productData.products;
         this.table.renderRows();
       }
@@ -51,7 +51,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   openDialog(): void {
     this.dialog.open(ProductDialogComponent, {
-      width: '250px',
+      width: '65%',
       data: { product: this.productTemplate, isEdit: false }
     });
   }
@@ -63,7 +63,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   onEdit(product: ProductData): void {
     this.dialog.open(ProductDialogComponent, {
-      width: '250px',
+      width: '65%',
       data: {
         _id: product._id,
         name: product.name,

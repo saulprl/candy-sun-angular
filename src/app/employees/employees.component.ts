@@ -4,7 +4,7 @@ import { EmployeesService } from './employees.service';
 import { Subscription } from 'rxjs';
 import { EmployeeData } from './employee-data.model';
 import { MatDialog } from '@angular/material/dialog';
-import { EmployeeDialogComponent } from './employee-dialog/employee-dialog/employee-dialog.component';
+import { EmployeeDialogComponent } from './employee-dialog/employee-dialog.component';
 
 @Component({
   selector: 'app-employees',
@@ -45,7 +45,7 @@ export class EmployeesComponent implements OnInit, OnDestroy {
 
   openDialog(): void {
     this.dialog.open(EmployeeDialogComponent, {
-      width: '250px',
+      width: '65%',
       data: { employee: this.employeeTemplate, isEdit: false }
     });
   }
@@ -57,7 +57,7 @@ export class EmployeesComponent implements OnInit, OnDestroy {
 
   onEdit(employee: EmployeeData) {
     this.dialog.open(EmployeeDialogComponent, {
-      width: '250px',
+      width: '65%',
       data: {
         _id: employee._id,
         name: employee.name,

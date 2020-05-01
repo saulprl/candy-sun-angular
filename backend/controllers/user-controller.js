@@ -36,6 +36,7 @@ exports.login = (request, response, next) => {
 
   User.findOne({ email: request.body.email }).then(user => {
     if (!user) {
+      console.log('Didn\'t find user');
       return response.status(401).json({
         message: 'No existe un usuario con esa dirección de correo electrónico.'
       });
@@ -50,24 +51,26 @@ exports.login = (request, response, next) => {
       });
     }
 
-    const token = jwt.sign(
-      {
-        email: fetchedUser.email,
-        id: fetchedUser._id
-      },
-      process.env.JWT_KEY,
-      {
-        expiresIn: '1h'
-      }
-    );
+    if (fetchedUser) {
+      const token = jwt.sign(
+        {
+          email: fetchedUser.email,
+          id: fetchedUser._id
+        },
+        process.env.JWT_KEY,
+        {
+          expiresIn: '1h'
+        }
+      );
 
-    response.status(200).json({
-      message: 'Sesión iniciada correctamente.',
-      token: token,
-      expiresIn: 3600,
-      userId: fetchedUser._id,
-      userName: fetchedUser.name
-    });
+      response.status(200).json({
+        message: 'Sesión iniciada correctamente.',
+        token: token,
+        expiresIn: 3600,
+        userId: fetchedUser._id,
+        userName: fetchedUser.name
+      });
+    }
   }).catch(error => {
     response.status(401).json({
       message: `Ocurrió el siguiente error: ${error.MongoError.keyValue}`

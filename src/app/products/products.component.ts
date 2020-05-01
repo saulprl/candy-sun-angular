@@ -42,7 +42,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
     this.dataSub = this.productsService.getDataListener()
     .subscribe((productData: { products: ProductData[], productCount: number }) => {
-      if (productData.productCount > 0) {
+      if (productData.productCount >= 0) {
         this.dataSource = productData.products;
         this.table.renderRows();
       }

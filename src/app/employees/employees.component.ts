@@ -4,7 +4,7 @@ import { EmployeesService } from './employees.service';
 import { Subscription } from 'rxjs';
 import { EmployeeData } from './employee-data.model';
 import { MatDialog } from '@angular/material/dialog';
-import { EmployeeDialogComponent } from './employee-dialog/employee-dialog/employee-dialog.component';
+import { EmployeeDialogComponent } from './employee-dialog/employee-dialog.component';
 
 @Component({
   selector: 'app-employees',

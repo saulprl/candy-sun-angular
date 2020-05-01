@@ -18,6 +18,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSelectModule } from '@angular/material/select';
 
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -26,7 +27,9 @@ import { ProductsComponent } from './products/products.component';
 import { ProductDialogComponent } from './products/product-dialog/product-dialog.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { EmployeesComponent } from './employees/employees.component';
-import { EmployeeDialogComponent } from './employees/employee-dialog/employee-dialog/employee-dialog.component';
+import { EmployeeDialogComponent } from './employees/employee-dialog/employee-dialog.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { CategoryDialogComponent } from './categories/category-dialog/category-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import { EmployeeDialogComponent } from './employees/employee-dialog/employee-di
     ProductsComponent,
     ProductDialogComponent,
     EmployeesComponent,
-    EmployeeDialogComponent
+    EmployeeDialogComponent,
+    CategoriesComponent,
+    CategoryDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -56,11 +61,13 @@ import { EmployeeDialogComponent } from './employees/employee-dialog/employee-di
     MatIconModule,
     MatCheckboxModule,
     MatMenuModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatSelectModule
   ],
   entryComponents: [
     ProductDialogComponent,
-    EmployeeDialogComponent
+    EmployeeDialogComponent,
+    CategoryDialogComponent
   ],
   providers: [
     {

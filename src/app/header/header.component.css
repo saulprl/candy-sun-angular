@@ -3,6 +3,10 @@ mat-toolbar {
   margin-bottom: 1rem;
 }
 
+mat-button {
+  text-align: center;
+}
+
 ul {
   display: flex;
   list-style: none;

@@ -12,6 +12,7 @@ const BACKEND_URL = environment.apiUrl + '/products/';
   providedIn: 'root'
 })
 export class ProductsService {
+  private showExisting = false;
   private products: ProductData[] = [];
   private dataListener = new Subject<{ products: ProductData[], productCount: number }>();
 
@@ -20,12 +21,14 @@ export class ProductsService {
     private router: Router
   ) { }
 
-  getProducts() {
+  getProducts(showExisting: boolean) {
+    this.showExisting = showExisting;
+
     this.http.get<{
       message: string,
       products: any,
       productCount: number
-    }>(BACKEND_URL)
+    }>(BACKEND_URL + showExisting)
     .pipe(map((productData) => {
       return {
         products: productData.products.map(product => {
@@ -74,20 +77,30 @@ export class ProductsService {
     };
 
     this.http.post<{ message: string, product: ProductData }>(BACKEND_URL, product).subscribe(responseData => {
-      this.getProducts();
+      this.getProducts(this.showExisting);
     });
   }
 
   editProduct(product: ProductData) {
     this.http.put(BACKEND_URL + product._id, product).subscribe(response => {
-      this.getProducts();
+      this.getProducts(this.showExisting);
     });
   }
 
   deleteProduct(product: ProductData) {
     this.http.delete(BACKEND_URL + product._id).subscribe(response => {
-      this.getProducts();
+      this.getProducts(this.showExisting);
     });
+  }
+
+  hasExpired(expirationDate: Date): boolean {
+    const today = new Date();
+    const eDate = new Date(expirationDate);
+
+    const diff = (Math.floor(Date.UTC(eDate.getFullYear(), eDate.getMonth(), eDate.getDate()) -
+      Date.UTC(today.getFullYear(), today.getMonth(), today.getDate())) / (1000 * 60 * 60 * 24));
+
+    return diff <= 5;
   }
 
 }

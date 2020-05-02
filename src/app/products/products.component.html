@@ -1,42 +1,49 @@
 <button mat-raised-button color="accent" (click)="openDialog()">Nuevo</button>
-<button mat-raised-button color="accent" (click)="refresh()">Actualizar</button>
+<button mat-raised-button color="accent" (click)="refresh(showExisting.checked)">Actualizar</button>
+<mat-checkbox #showExisting (change)="refresh(showExisting.checked)">Filtrar existentes</mat-checkbox>
+<mat-form-field>
+  <mat-label>Filtrar</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="e. g. Galletas">
+</mat-form-field>
 <div class="container">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="name" sticky>
-      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
       <td mat-cell *matCellDef="let product">{{ product.name }}</td>
     </ng-container>
     <ng-container matColumnDef="purchase_price">
-      <th mat-header-cell *matHeaderCellDef>Precio de adquisición</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Precio de adquisición</th>
       <td mat-cell *matCellDef="let product">$ {{ product.purchase_price }}</td>
     </ng-container>
     <ng-container matColumnDef="purchase_date">
-      <th mat-header-cell *matHeaderCellDef>Fecha de adquisición</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de adquisición</th>
       <td mat-cell *matCellDef="let product">{{ product.purchase_date.split("T")[0] | date: 'mediumDate' }}</td>
     </ng-container>
     <ng-container matColumnDef="selling_price">
-      <th mat-header-cell *matHeaderCellDef>Precio de venta</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Precio de venta</th>
       <td mat-cell *matCellDef="let product">$ {{ product.selling_price }}</td>
     </ng-container>
     <ng-container matColumnDef="quantity">
-      <th mat-header-cell *matHeaderCellDef>Cantidad</th>
-      <td mat-cell *matCellDef="let product">{{ product.quantity }} uds.</td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Cantidad</th>
+      <td mat-cell *matCellDef="let product"
+      [class.warning]="product.quantity <= 5">{{ product.quantity }} uds.</td>
     </ng-container>
     <ng-container matColumnDef="category">
-      <th mat-header-cell *matHeaderCellDef>Categoría</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Categoría</th>
       <td mat-cell *matCellDef="let product">{{ product.category }}</td>
     </ng-container>
     <ng-container matColumnDef="calories">
-      <th mat-header-cell *matHeaderCellDef>Calorías</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Calorías</th>
       <td mat-cell *matCellDef="let product">{{ product.calories }} kcal.</td>
     </ng-container>
     <ng-container matColumnDef="brand">
-      <th mat-header-cell *matHeaderCellDef>Marca</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Marca</th>
       <td mat-cell *matCellDef="let product">{{ product.brand }}</td>
     </ng-container>
     <ng-container matColumnDef="expiration">
-      <th mat-header-cell *matHeaderCellDef>Fecha de caducidad</th>
-      <td mat-cell *matCellDef="let product">{{ product.expiration.split("T")[0] | date: 'mediumDate' }}</td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de caducidad</th>
+      <td mat-cell *matCellDef="let product"
+      [class.warning]="productsService.hasExpired(product.expiration)">{{ product.expiration.split("T")[0] | date: 'mediumDate' }}</td>
     </ng-container>
 
     <ng-container matColumnDef="star" stickyEnd>

@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { MatTable } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { ProductData } from './products-data.model';
 import { ProductsService } from './products.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductDialogComponent } from './product-dialog/product-dialog.component';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-products',
@@ -12,10 +13,10 @@ import { ProductDialogComponent } from './product-dialog/product-dialog.componen
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit, OnDestroy {
-  @ViewChild(MatTable, { static: true }) table: MatTable<any>;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   private dataSub: Subscription;
-  dataSource: ProductData[] = [];
+  dataSource: MatTableDataSource<ProductData>;
   displayedColumns: string[] = ['name', 'purchase_price', 'purchase_date',
     'selling_price', 'quantity', 'category', 'calories', 'brand', 'expiration', 'star'];
 
@@ -33,20 +34,26 @@ export class ProductsComponent implements OnInit, OnDestroy {
   };
 
   constructor(
-    private productsService: ProductsService,
+    public productsService: ProductsService,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    this.productsService.getProducts();
+    this.productsService.getProducts(false);
 
     this.dataSub = this.productsService.getDataListener()
     .subscribe((productData: { products: ProductData[], productCount: number }) => {
       if (productData.productCount >= 0) {
-        this.dataSource = productData.products;
-        this.table.renderRows();
+        this.dataSource = new MatTableDataSource(productData.products);
+        this.dataSource.sort = this.sort;
       }
     });
+
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   openDialog(): void {
@@ -56,9 +63,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
     });
   }
 
-  refresh(): void {
-    this.productsService.getProducts();
-    this.table.renderRows();
+  refresh(showExisting: boolean): void {
+    this.productsService.getProducts(showExisting);
   }
 
   onEdit(product: ProductData): void {

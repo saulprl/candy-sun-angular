@@ -86,5 +86,3 @@ exports.deleteCategory = (request, response, next) => {
     });
   });
 };
-
-

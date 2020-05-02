@@ -30,14 +30,6 @@
   <mat-form-field>
     <input
     matInput
-    type="date"
-    formControlName="purchaseDate"
-    >
-    <mat-error *ngIf="controls.purchaseDate.errors?.required">Este campo es obligatorio.</mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <input
-    matInput
     type="number"
     placeholder="Precio de venta"
     formControlName="sellingPrice"
@@ -87,12 +79,22 @@
     >
     <mat-error *ngIf="controls.brand.errors?.required">Este campo es obligatorio.</mat-error>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="date-picker">
+    <mat-label>Fecha de adquisición</mat-label>
+    <input matInput [matDatepicker]="pDatePicker" formControlName="purchaseDate">
+    <mat-datepicker-toggle matSuffix [for]="pDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #pDatePicker></mat-datepicker>
+    <mat-error *ngIf="controls.purchaseDate.errors?.required">Este campo es obligatorio.</mat-error>
+  </mat-form-field>
+  <mat-form-field class="date-picker">
+    <mat-label>Fecha de caducidad</mat-label>
     <input
     matInput
-    type="date"
+    [matDatepicker]="eDatePicker"
     formControlName="expiration"
     >
+    <mat-datepicker-toggle matSuffix [for]="eDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #eDatePicker></mat-datepicker>
     <mat-error *ngIf="controls.expiration.errors?.required">Este campo es obligatorio.</mat-error>
   </mat-form-field>
 </form>

@@ -41,13 +41,13 @@ export class ProductDialogComponent implements OnInit {
       _id: [ { value: this.data._id, disabled: true } ],
       name: [ this.data.name, Validators.required ],
       purchasePrice: [ this.data.purchase_price, Validators.required ],
-      purchaseDate: [ this.data.purchase_date, Validators.required ],
+      purchaseDate: [ new Date(this.data.purchase_date), Validators.required ],
       sellingPrice: [ this.data.selling_price, Validators.required ],
       quantity: [ this.data.quantity, Validators.required ],
-      category: [ Validators.required ],
+      category: [ this.data.category, Validators.required ],
       calories: [ this.data.calories, Validators.required ],
       brand: [ this.data.brand, Validators.required ],
-      expiration: [ this.data.expiration, Validators.required ]
+      expiration: [ new Date(this.data.expiration), Validators.required ]
     });
 
     this.buttonText = this.data.isEdit ? 'Editar' : 'Agregar';

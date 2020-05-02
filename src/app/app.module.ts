@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,6 +20,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSortModule } from '@angular/material/sort';
 
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -52,6 +56,7 @@ import { ErrorInterceptor } from './error.interceptor';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatToolbarModule,
@@ -65,7 +70,10 @@ import { ErrorInterceptor } from './error.interceptor';
     MatCheckboxModule,
     MatMenuModule,
     MatSidenavModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSortModule
   ],
   entryComponents: [
     ProductDialogComponent,
@@ -74,6 +82,7 @@ import { ErrorInterceptor } from './error.interceptor';
     ErrorComponent
   ],
   providers: [
+    MatDatepickerModule,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

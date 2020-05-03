@@ -18,13 +18,15 @@
       >
       <mat-error *ngIf="controls.surname.errors?.required">Este campo es obligatorio.</mat-error>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="date-picker">
+      <mat-label>Fecha de nacimiento</mat-label>
       <input
       matInput
-      type="date"
+      [matDatepicker]="dobPicker"
       formControlName="dob"
       >
-      <mat-error *ngIf="controls.dob.errors?.required">La fecha de nacimiento es obligatoria.</mat-error>
+      <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+      <mat-datepicker #dobPicker></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
       <input

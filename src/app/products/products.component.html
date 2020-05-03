@@ -1,6 +1,6 @@
 <button mat-raised-button color="accent" (click)="openDialog()">Nuevo</button>
 <button mat-raised-button color="accent" (click)="refresh(showExisting.checked)">Actualizar</button>
-<mat-checkbox #showExisting (change)="refresh(showExisting.checked)">Filtrar existentes</mat-checkbox>
+<mat-checkbox #showExisting (change)="refresh(showExisting.checked)">Filtrar existentes y en buen estado</mat-checkbox>
 <mat-form-field>
   <mat-label>Filtrar</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="e. g. Galletas">

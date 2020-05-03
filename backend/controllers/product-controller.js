@@ -69,7 +69,7 @@ exports.updateProduct = (request, response, next) => {
 exports.getProducts = (request, response, next) => {
   let fetchedProducts;
 
-  let filter = request.params.showExisting == 'true' ? { quantity: { $gte: 1 } } : undefined;
+  let filter = request.params.showExisting == 'true' ? { quantity: { $gte: 1 }, expiration: { $gte: new Date() } } : undefined;
 
   Product.find(filter).then(documents => {
     if (documents) {

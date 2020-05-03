@@ -66,3 +66,9 @@ th.mat-column-position, td.mat-column-position {
 .mat-table-sticky:last-child {
   border-left: 1px solid rgba(255, 255, 255, 0.4);
 }
+
+@media screen and (max-width: 720px) {
+  button {
+    margin-bottom: 0.5rem;
+  }
+}

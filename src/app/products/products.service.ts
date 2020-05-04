@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { ProductData } from './products-data.model';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { CategoryData } from '../categories/category-data.model';
+import { CategoriesService } from '../categories/categories.service';
 
 const BACKEND_URL = environment.apiUrl + '/products/';
 
@@ -18,7 +20,8 @@ export class ProductsService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private categoriesService: CategoriesService
   ) { }
 
   getProducts(showExisting: boolean) {
@@ -55,6 +58,10 @@ export class ProductsService {
         productCount: transformedProductData.productCount
       });
     });
+  }
+
+  getCategories() {
+    this.categoriesService.getCategories();
   }
 
   getDataListener() {

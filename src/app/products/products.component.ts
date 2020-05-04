@@ -40,6 +40,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.productsService.getProducts(false);
+    this.productsService.getCategories();
 
     this.dataSub = this.productsService.getDataListener()
     .subscribe((productData: { products: ProductData[], productCount: number }) => {
@@ -65,6 +66,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   refresh(showExisting: boolean): void {
     this.productsService.getProducts(showExisting);
+    this.productsService.getCategories();
   }
 
   onEdit(product: ProductData): void {

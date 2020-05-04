@@ -36,6 +36,9 @@ import { CategoriesComponent } from './categories/categories.component';
 import { CategoryDialogComponent } from './categories/category-dialog/category-dialog.component';
 import { ErrorComponent } from './error/error.component';
 import { ErrorInterceptor } from './error.interceptor';
+import { LoaderComponent } from './loader/loader.component';
+import { LoaderInterceptor } from './loader/loader.interceptor';
+import { LoaderService } from './loader/loader.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,8 @@ import { ErrorInterceptor } from './error.interceptor';
     EmployeeDialogComponent,
     CategoriesComponent,
     CategoryDialogComponent,
-    ErrorComponent
+    ErrorComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -83,6 +87,7 @@ import { ErrorInterceptor } from './error.interceptor';
   ],
   providers: [
     MatDatepickerModule,
+    LoaderService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
@@ -91,6 +96,11 @@ import { ErrorInterceptor } from './error.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
       multi: true
     }
   ],

@@ -44,6 +44,10 @@ export class CategoriesService {
     });
   }
 
+  getCategoriesArray() {
+    return this.categories;
+  }
+
   getDataListener() {
     return this.dataListener.asObservable();
   }

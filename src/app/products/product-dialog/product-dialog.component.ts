@@ -28,14 +28,7 @@ export class ProductDialogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.categoriesService.getCategories();
-
-    this.dataSub = this.categoriesService.getDataListener()
-      .subscribe((categoryData: { categories: CategoryData[], categoryCount: number }) => {
-        if (categoryData.categoryCount > 0) {
-          this.categories = categoryData.categories;
-        }
-      });
+    this.categories = [...this.categoriesService.getCategoriesArray()];
 
     this.form = this.formBuilder.group({
       _id: [ { value: this.data._id, disabled: true } ],

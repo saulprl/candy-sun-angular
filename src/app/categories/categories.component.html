@@ -1,6 +1,6 @@
 <div class="container">
-  <button mat-raised-button color="accent" (click)="openDialog()">Nueva</button>
-  <button mat-raised-button color="accent" (click)="refresh()">Actualizar</button>
+  <button mat-raised-button color="accent" (click)="openDialog()" id="new-category">Nueva</button>
+  <button mat-raised-button color="accent" (click)="refresh()" id="refresh">Actualizar</button>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Nombre</th>
@@ -10,15 +10,15 @@
     <ng-container matColumnDef="star">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let category">
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Opciones">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Opciones" id="menu">
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="onEdit(category)">
+          <button mat-menu-item (click)="onEdit(category)" id="edit-category">
             <mat-icon>edit</mat-icon>
             <span>Editar categoría</span>
           </button>
-          <button mat-menu-item (click)="onDelete(category)">
+          <button mat-menu-item (click)="onDelete(category)" id="delete">
             <mat-icon>delete</mat-icon>
             <span>Eliminar categoría</span>
           </button>

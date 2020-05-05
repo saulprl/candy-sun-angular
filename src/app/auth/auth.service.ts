@@ -31,7 +31,7 @@ export class AuthService {
     authData.setDob(dob);
 
     this.http.post(BACKEND_URL + 'signup', authData).subscribe(response => {
-
+      this.router.navigate(['/employees']);
     }, error => {
       this.authStatusListener.next(false);
     });

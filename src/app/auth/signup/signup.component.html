@@ -6,6 +6,7 @@
       matInput
       placeholder="Nombre"
       formControlName="name"
+      id="name"
       >
       <mat-error *ngIf="controls.name.errors?.required">Este campo es obligatorio.</mat-error>
     </mat-form-field>
@@ -14,6 +15,7 @@
       matInput
       placeholder="Apellido"
       formControlName="surname"
+      id="surname"
       >
       <mat-error *ngIf="controls.surname.errors?.required">Este campo es obligatorio.</mat-error>
     </mat-form-field>
@@ -23,6 +25,7 @@
       matInput
       [matDatepicker]="dobPicker"
       formControlName="dob"
+      id="dob"
       >
       <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
       <mat-datepicker #dobPicker></mat-datepicker>
@@ -33,6 +36,7 @@
       type="email"
       placeholder="Correo electrónico"
       formControlName="email"
+      id="email"
       >
       <mat-error *ngIf="controls.email.errors?.required">Este campo es obligatorio.</mat-error>
       <mat-error *ngIf="controls.email.errors?.email">Ingresa un correo electrónico válido.</mat-error>
@@ -43,6 +47,7 @@
       type="password"
       placeholder="Contraseña"
       formControlName="password"
+      id="password"
       >
       <mat-error *ngIf="controls.password.errors?.required">Este campo es obligatorio.</mat-error>
       <mat-error *ngIf="controls.password.errors?.minlength">La contraseña debe contener al menos 8 caracteres.</mat-error>
@@ -53,10 +58,11 @@
       type="password"
       placeholder="Confirmar contraseña"
       formControlName="confirmPassword"
+      id="confirmPassword"
       >
       <mat-error *ngIf="controls.confirmPassword.errors?.required">Este campo es obligatorio.</mat-error>
       <mat-error *ngIf="controls.confirmPassword.errors?.mustMatch">Las contraseñas deben coincidir.</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">Registrar</button>
+    <button mat-raised-button color="primary" type="submit" id="signup">Registrar</button>
   </form>
 </mat-card>

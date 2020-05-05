@@ -8,6 +8,7 @@
     matInput
     placeholder="ID"
     formControlName="_id"
+    id="id"
     >
   </mat-form-field>
   <mat-form-field>
@@ -15,6 +16,7 @@
     matInput
     placeholder="Nombre"
     formControlName="name"
+    id="name"
     >
     <mat-error *ngIf="controls.name.errors?.required">Este campo es obligatorio.</mat-error>
   </mat-form-field>
@@ -24,6 +26,7 @@
     type="number"
     placeholder="Precio de adquisición"
     formControlName="purchasePrice"
+    id="p-price"
     >
     <mat-error *ngIf="controls.purchasePrice.errors?.required">Este campo es obligatorio.</mat-error>
   </mat-form-field>
@@ -33,6 +36,7 @@
     type="number"
     placeholder="Precio de venta"
     formControlName="sellingPrice"
+    id="s-price"
     >
     <mat-error *ngIf="controls.sellingPrice.errors?.required">Este campo es obligatorio.</mat-error>
   </mat-form-field>
@@ -42,12 +46,13 @@
     type="number"
     placeholder="Cantidad"
     formControlName="quantity"
+    id="quantity"
     >
     <mat-error *ngIf="controls.quantity.errors?.required">Este campo es obligatorio.</mat-error>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Categoría</mat-label>
-    <mat-select formControlName="category">
+    <mat-select formControlName="category" id="category">
       <mat-option *ngFor="let category of categories" [value]="category.name">
         {{ category.name }}
       </mat-option>
@@ -67,6 +72,7 @@
     type="number"
     placeholder="Calorías"
     formControlName="calories"
+    id="calories"
     >
     <mat-error *ngIf="controls.calories.errors?.required">Este campo es obligatorio.</mat-error>
   </mat-form-field>
@@ -76,30 +82,32 @@
     type="text"
     placeholder="Marca"
     formControlName="brand"
+    id="brand"
     >
     <mat-error *ngIf="controls.brand.errors?.required">Este campo es obligatorio.</mat-error>
   </mat-form-field>
-  <mat-form-field class="date-picker">
+  <mat-form-field class="date-picker" id="p-date-picker">
     <mat-label>Fecha de adquisición</mat-label>
-    <input matInput [matDatepicker]="pDatePicker" formControlName="purchaseDate">
-    <mat-datepicker-toggle matSuffix [for]="pDatePicker"></mat-datepicker-toggle>
+    <input matInput [matDatepicker]="pDatePicker" formControlName="purchaseDate" id="p-date">
+    <mat-datepicker-toggle matSuffix [for]="pDatePicker" id="p-date-toggle"></mat-datepicker-toggle>
     <mat-datepicker #pDatePicker></mat-datepicker>
     <mat-error *ngIf="controls.purchaseDate.errors?.required">Este campo es obligatorio.</mat-error>
   </mat-form-field>
-  <mat-form-field class="date-picker">
+  <mat-form-field class="date-picker" id="e-date-picker">
     <mat-label>Fecha de caducidad</mat-label>
     <input
     matInput
     [matDatepicker]="eDatePicker"
     formControlName="expiration"
+    id="e-date"
     >
-    <mat-datepicker-toggle matSuffix [for]="eDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker-toggle matSuffix [for]="eDatePicker" id="e-date-toggle"></mat-datepicker-toggle>
     <mat-datepicker #eDatePicker></mat-datepicker>
     <mat-error *ngIf="controls.expiration.errors?.required">Este campo es obligatorio.</mat-error>
   </mat-form-field>
 </form>
 <div mat-dialog-actions>
-  <button mat-raised-button (click)="close()" color="warn">Cancelar</button>
-  <button *ngIf="!isDelete" mat-raised-button cdkFocusInitial (click)="save()" color="accent">{{ buttonText }}</button>
-  <button *ngIf="isDelete" mat-button cdkFocusInitial (click)="delete()" color="accent">Eliminar</button>
+  <button mat-raised-button (click)="close()" color="warn" id="cancel">Cancelar</button>
+  <button *ngIf="!isDelete" mat-raised-button cdkFocusInitial (click)="save()" color="accent" id="save">{{ buttonText }}</button>
+  <button *ngIf="isDelete" mat-button cdkFocusInitial (click)="delete()" color="accent" id="delete">Eliminar</button>
 </div>

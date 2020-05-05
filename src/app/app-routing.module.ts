@@ -5,6 +5,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { ProductsComponent } from './products/products.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { AuthGuard } from './auth/auth.guard';
 
 
 const routes: Routes = [
@@ -14,24 +15,29 @@ const routes: Routes = [
   },
   {
     path: 'signup',
-    component: SignupComponent
+    component: SignupComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'products',
-    component: ProductsComponent
+    component: ProductsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'employees',
-    component: EmployeesComponent
+    component: EmployeesComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'categories',
-    component: CategoriesComponent
+    component: CategoriesComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

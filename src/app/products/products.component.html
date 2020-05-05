@@ -1,47 +1,47 @@
-<button mat-raised-button color="accent" (click)="openDialog()">Nuevo</button>
-<button mat-raised-button color="accent" (click)="refresh(showExisting.checked)">Actualizar</button>
-<mat-checkbox #showExisting (change)="refresh(showExisting.checked)">Filtrar existentes y en buen estado</mat-checkbox>
+<button mat-raised-button color="accent" (click)="openDialog()" id="new-product">Nuevo</button>
+<button mat-raised-button color="accent" (click)="refresh(showExisting.checked)" id="refresh">Actualizar</button>
+<mat-checkbox #showExisting (change)="refresh(showExisting.checked)" id="existing">Filtrar existentes y en buen estado</mat-checkbox>
 <mat-form-field>
   <mat-label>Filtrar</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="e. g. Galletas">
+  <input matInput (keyup)="applyFilter($event)" placeholder="e. g. Galletas" id="search-filter">
 </mat-form-field>
 <div class="container">
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="name" sticky>
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header id="name-sort">Nombre</th>
       <td mat-cell *matCellDef="let product">{{ product.name }}</td>
     </ng-container>
     <ng-container matColumnDef="purchase_price">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Precio de adquisición</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header id="p-price-sort">Precio de adquisición</th>
       <td mat-cell *matCellDef="let product">$ {{ product.purchase_price }}</td>
     </ng-container>
     <ng-container matColumnDef="purchase_date">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de adquisición</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header id="p-date-sort">Fecha de adquisición</th>
       <td mat-cell *matCellDef="let product">{{ product.purchase_date.split("T")[0] | date: 'mediumDate' }}</td>
     </ng-container>
     <ng-container matColumnDef="selling_price">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Precio de venta</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header id="s-price-sort">Precio de venta</th>
       <td mat-cell *matCellDef="let product">$ {{ product.selling_price }}</td>
     </ng-container>
     <ng-container matColumnDef="quantity">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Cantidad</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header id="quantity-sort">Cantidad</th>
       <td mat-cell *matCellDef="let product"
       [class.warning]="product.quantity <= 5">{{ product.quantity }} uds.</td>
     </ng-container>
     <ng-container matColumnDef="category">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Categoría</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header id="category-sort">Categoría</th>
       <td mat-cell *matCellDef="let product">{{ product.category }}</td>
     </ng-container>
     <ng-container matColumnDef="calories">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Calorías</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header id="calories-sort">Calorías</th>
       <td mat-cell *matCellDef="let product">{{ product.calories }} kcal.</td>
     </ng-container>
     <ng-container matColumnDef="brand">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Marca</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header id="brand-sort">Marca</th>
       <td mat-cell *matCellDef="let product">{{ product.brand }}</td>
     </ng-container>
     <ng-container matColumnDef="expiration">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de caducidad</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header id="e-date-sort">Fecha de caducidad</th>
       <td mat-cell *matCellDef="let product"
       [class.warning]="productsService.hasExpired(product.expiration)">{{ product.expiration.split("T")[0] | date: 'mediumDate' }}</td>
     </ng-container>
@@ -49,15 +49,15 @@
     <ng-container matColumnDef="star" stickyEnd>
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let product">
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Opciones">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Opciones" id="menu">
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="onEdit(product)">
+          <button mat-menu-item (click)="onEdit(product)" id="edit">
             <mat-icon>edit</mat-icon>
             <span>Editar producto</span>
           </button>
-          <button mat-menu-item (click)="onDelete(product)">
+          <button mat-menu-item (click)="onDelete(product)" id="delete">
             <mat-icon>delete</mat-icon>
             <span>Eliminar producto</span>
           </button>

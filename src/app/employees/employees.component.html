@@ -1,4 +1,4 @@
-<button mat-raised-button color="accent" (click)="refresh()">Actualizar</button>
+<button mat-raised-button color="accent" (click)="refresh()" id="refresh">Actualizar</button>
 <div class="container">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="name" sticky>
@@ -21,15 +21,15 @@
     <ng-container matColumnDef="star" stickyEnd>
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let employee">
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Opciones">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Opciones" id="menu">
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="onEdit(employee)">
+          <button mat-menu-item (click)="onEdit(employee)" id="edit">
             <mat-icon>edit</mat-icon>
             <span>Editar empleado</span>
           </button>
-          <button mat-menu-item (click)="onDelete(employee)">
+          <button mat-menu-item (click)="onDelete(employee)" id="delete">
             <mat-icon>delete</mat-icon>
             <span>Eliminar empleado</span>
           </button>

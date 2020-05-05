@@ -4,6 +4,7 @@
   <form [formGroup]="form" (submit)="onLogin()">
     <mat-form-field>
       <input
+      id="email"
       matInput
       type="email"
       placeholder="Correo electrónico"
@@ -14,6 +15,7 @@
     </mat-form-field>
     <mat-form-field>
       <input
+      id="password"
       matInput
       type="password"
       placeholder="Contraseña"
@@ -21,6 +23,6 @@
       >
       <mat-error *ngIf="controls.password.errors?.required">Este campo es obligatorio.</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">Ingresar</button>
+    <button mat-raised-button color="primary" type="submit" id="log-in">Ingresar</button>
   </form>
 </mat-card>

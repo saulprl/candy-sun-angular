@@ -8,6 +8,7 @@
     matInput
     placeholder="ID"
     formControlName="_id"
+    id="id"
     >
   </mat-form-field>
   <mat-form-field>
@@ -15,12 +16,13 @@
     matInput
     placeholder="Nombre"
     formControlName="name"
+    id="name"
     >
     <mat-error *ngIf="controls.name.errors?.required">Este campo es obligatorio.</mat-error>
   </mat-form-field>
 </form>
 <div mat-dialog-actions>
-  <button mat-raised-button (click)="close()" color="warn">Cancelar</button>
-  <button *ngIf="!isDelete" mat-raised-button cdkFocusInitial (click)="save()" color="accent">{{ buttonText }}</button>
-  <button *ngIf="isDelete" mat-button cdkFocusInitial (click)="delete()" color="accent">Eliminar</button>
+  <button mat-raised-button (click)="close()" color="warn" id="cancel">Cancelar</button>
+  <button *ngIf="!isDelete" mat-raised-button cdkFocusInitial (click)="save()" color="accent" id="save">{{ buttonText }}</button>
+  <button *ngIf="isDelete" mat-button cdkFocusInitial (click)="delete()" color="accent" id="delete">Eliminar</button>
 </div>

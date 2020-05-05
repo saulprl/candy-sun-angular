@@ -14,7 +14,7 @@ module.exports = (request, response, next) => {
     next();
   } catch(error) {
     response.status(401).json({
-      message: 'You\'re not authenticated!'
+      message: 'No has iniciado sesión.'
     });
   }
 };
